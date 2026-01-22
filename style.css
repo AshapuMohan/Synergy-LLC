@@ -1,14 +1,13 @@
 :root {
-    /* Updated blue to matchConsumers Credit Union approximate color */
     --primary-blue: #043f8b;
     --hover-blue: #16407a;
+    --link-blue: #1c5299;
     --text-dark: #333333;
     --text-label: #555555;
     --border-color: #cccccc;
     --white: #ffffff;
     --bg-page: #ffffff;
-    /* Page background seems to be white mainly */
-    --link-blue: #1c5299;
+
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
@@ -23,20 +22,18 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--white);
+    background-color: var(--bg-page);
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-
 .main-header {
     background-color: var(--primary-blue);
     padding: 0;
     height: 80px;
     width: 100%;
-    /* Increased height slightly */
     display: flex;
     align-items: center;
     position: sticky;
@@ -46,7 +43,6 @@ body {
 
 .header-container {
     width: 100%;
-    /* Keep width somewhat constrained but fluid */
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
@@ -57,22 +53,20 @@ body {
 
 .logo-img {
     height: 45px;
-    /* Adjust based on actual logo aspect ratio */
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 .support-icon {
-    color: white;
+    color: var(--white);
     font-size: 1.8rem;
-    /* Slightly larger icon */
     opacity: 0.9;
     transition: opacity 0.2s;
     cursor: pointer;
@@ -82,30 +76,24 @@ body {
     opacity: 1;
 }
 
-
 .login-page {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
-    background-color: #ffffff;
-    /* Optional: subtle gradient or plain white, image suggests very clean white/light grey */
-    background: #ffffff;
+    background-color: var(--bg-page);
 }
 
 .login-card {
     background: var(--white);
     width: 100%;
     max-width: 600px;
-    /* Slightly narrower */
     padding: 40px 100px;
-    /* Soft diffuse shadow */
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     text-align: center;
     border: none;
-    /* Removed border */
 }
 
 .login-title {
@@ -114,7 +102,6 @@ body {
     color: var(--text-dark);
     margin-bottom: 30px;
 }
-
 
 .login-form {
     display: flex;
@@ -139,17 +126,15 @@ body {
     width: 100%;
     padding: 10px 12px;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 2px;
     color: var(--text-dark);
-    /* Make input background white */
-    background-color: #fff;
+    background-color: var(--white);
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-blue);
-    /* No glow, just border color change usually for this style */
 }
 
 .input-wrapper {
@@ -168,19 +153,16 @@ body {
     font-size: 0.9rem;
 }
 
-
 .checkbox-group {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
 }
 
-/* Custom switch styles */
 .switch {
     position: relative;
     display: inline-block;
     width: 46px;
-    /* Slightly smaller */
     height: 24px;
     margin-right: 12px;
 }
@@ -199,7 +181,6 @@ body {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    /* Grey when off */
     transition: .4s;
     border-radius: 34px;
 }
@@ -211,14 +192,13 @@ body {
     width: 18px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
+    background-color: var(--white);
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked+.slider {
     background-color: #130476;
-    /* Turned on color - keeping grey/neutral per typical logic unless specific brand color needed */
 }
 
 input:checked+.slider:before {
@@ -229,18 +209,14 @@ input:checked+.slider:before {
     margin-bottom: 0 !important;
     font-weight: 400 !important;
     font-size: 0.95rem !important;
-    color: #333 !important;
+    color: var(--text-dark) !important;
     cursor: pointer;
 }
-
 
 .btn-primary {
     width: 100%;
     padding: 12px;
-    background-color: #337ab7;
-    /* Slightly lighter/different blue for button sometimes */
     background-color: var(--primary-blue);
-    /* Stick to brand for now */
     color: var(--white);
     border: none;
     border-radius: 4px;
@@ -291,16 +267,12 @@ input:checked+.slider:before {
     background-color: #f0f7ff;
 }
 
-
 .message-container {
     margin-bottom: 0;
     text-align: center;
-    /* Center the text/icon group */
     font-size: 0.9rem;
     min-height: 0;
-    /* Collapse when empty if needed, handled by display none usually or empty content */
     display: none;
-    /* Hidden by default */
 }
 
 .message-container.message-error,
@@ -308,14 +280,12 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Center horizontally */
     margin-bottom: 20px;
 }
 
 .message-error {
     font-weight: 500;
     color: var(--text-dark);
-    /* Ensure text is dark */
 }
 
 .error-icon-hexagon {
@@ -324,14 +294,10 @@ input:checked+.slider:before {
     justify-content: center;
     width: 24px;
     height: 24px;
-    /* Square for circle */
     background-color: #d93025;
-    /* Red Circle */
     border-radius: 50%;
-    /* Make it a circle */
     margin-right: 10px;
     position: relative;
-    /* Remove clip-path from parent */
 }
 
 .error-icon-hexagon::after {
@@ -339,8 +305,7 @@ input:checked+.slider:before {
     position: absolute;
     width: 16px;
     height: 14px;
-    background-color: white;
-    /* White Hexagon */
+    background-color: var(--white);
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     z-index: 0;
     top: 50%;
@@ -351,7 +316,6 @@ input:checked+.slider:before {
 .error-icon-hexagon i {
     position: relative;
     z-index: 1;
-    /* Text on top */
     color: #d93025;
     font-weight: 800;
     font-style: normal;
@@ -363,11 +327,8 @@ input:checked+.slider:before {
     color: #1e8e3e;
 }
 
-
-
 .main-footer {
     background-color: #fcfcfc;
-    /* Very light grey */
     padding: 20px 0px 100px 0px;
     font-size: 0.85rem;
     color: var(--text-dark);
@@ -449,8 +410,6 @@ input:checked+.slider:before {
     align-items: center;
 }
 
-
-/* Modal Styles - Kept mostly same */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -458,14 +417,10 @@ input:checked+.slider:before {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-
     display: none;
-
     justify-content: center;
     align-items: flex-start;
-
     padding-top: 100px;
-
     z-index: 1000;
     backdrop-filter: blur(2px);
 }
@@ -476,7 +431,7 @@ input:checked+.slider:before {
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--white);
     width: 100%;
     max-width: 800px;
     border-radius: 4px;
@@ -495,7 +450,7 @@ input:checked+.slider:before {
 .modal-header h2 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .close-btn {
@@ -525,7 +480,6 @@ input:checked+.slider:before {
     font-weight: 500;
     margin-bottom: 16px;
     color: #003057;
-
 }
 
 .hours-section h4 {
@@ -543,7 +497,7 @@ input:checked+.slider:before {
 
 .hours-details {
     font-size: 0.95rem;
-    color: #333;
+    color: var(--text-dark);
     line-height: 1.6;
 }
 
@@ -564,7 +518,6 @@ input:checked+.slider:before {
         transform: translateY(0);
     }
 }
-
 
 @media (max-width: 768px) {
     .header-container {

@@ -5,46 +5,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('loginBtn');
     const messageContainer = document.getElementById('messageContainer');
     const togglePasswordBtn = document.querySelector('.toggle-password');
+    const supportIcon = document.querySelector('.support-icon');
+    const modal = document.getElementById('supportModal');
+    const closeModalBtn = document.getElementById('closeModal');
 
-    if (togglePasswordBtn) {
-        togglePasswordBtn.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            const icon = togglePasswordBtn.querySelector('i');
+    const CONFIG = {
+        mockUser: 'user',
+        mockPass: 'password',
+        redirectDelay: 1000,
+        loginDelay: 1500
+    };
+
+    const togglePasswordVisibility = () => {
+        if (!passwordInput || !togglePasswordBtn) return;
+
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+
+        const icon = togglePasswordBtn.querySelector('i');
+        if (icon) {
             icon.classList.toggle('fa-eye');
             icon.classList.toggle('fa-eye-slash');
-        });
-    }
+        }
+    };
 
-    const VALID_USER = 'user';
-    const VALID_PASS = 'password';
+    const displayMessage = (message, type = 'info') => {
+        messageContainer.className = `message-container message-${type}`;
 
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            handleLogin();
-        });
-    }
+        if (type === 'error') {
+            messageContainer.innerHTML = `<span class="error-icon-hexagon"><i>!</i></span> ${message}`;
+        } else {
+            messageContainer.innerText = message;
+        }
+    };
 
-    function handleLogin() {
-        messageContainer.className = 'message-container';
-        messageContainer.innerText = '';
+    const performLogin = () => {
+        return new Promise(resolve => setTimeout(resolve, CONFIG.loginDelay));
+    };
+
+    const onLoginSubmit = async (e) => {
+        e.preventDefault();
+
+        displayMessage(' ', 'reset');
 
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
 
-        if (!username && !password) {
-            showMessage('Please enter your username and password.', 'error');
-            return;
-        }
+        if (!username || !password) {
+            let errorMsg = 'Please enter your username and password.';
+            if (!username && password) errorMsg = 'Please enter your username.';
+            if (username && !password) errorMsg = 'Please enter your password.';
 
-        if (!username) {
-            showMessage('Please enter your username.', 'error');
-            return;
-        }
-
-        if (!password) {
-            showMessage('Please enter your password.', 'error');
+            displayMessage(errorMsg, 'error');
             return;
         }
 
@@ -52,32 +64,35 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Logging In...';
         loginBtn.disabled = true;
 
-        setTimeout(() => {
-            if (username === VALID_USER && password === VALID_PASS) {
-                showMessage('Login Successful! Redirecting...', 'success');
+        try {
+            await performLogin();
+
+            if (username === CONFIG.mockUser && password === CONFIG.mockPass) {
+                displayMessage('Login Successful! Redirecting...', 'success');
                 setTimeout(() => {
-                    // Redirect logic here
-                }, 1000);
+                    console.log('Redirecting to dashboard...');
+                }, CONFIG.redirectDelay);
             } else {
-                showMessage('Invalid username or password.', 'error');
+                displayMessage('Invalid username or password.', 'error');
             }
-            loginBtn.innerText = originalBtnText;
-            loginBtn.disabled = false;
-        }, 1500);
-    }
-
-    function showMessage(msg, type) {
-        if (type === 'error') {
-            messageContainer.innerHTML = `<span class="error-icon-hexagon"><i>!</i></span> ${msg}`;
-        } else {
-            messageContainer.innerText = msg;
+        } catch (error) {
+            console.error('Login error:', error);
+            displayMessage('An unexpected error occurred.', 'error');
+        } finally {
+            if (loginBtn.disabled && messageContainer.className.includes('error')) {
+                loginBtn.innerText = originalBtnText;
+                loginBtn.disabled = false;
+            }
         }
-        messageContainer.className = `message-container message-${type}`;
+    };
+
+    if (togglePasswordBtn) {
+        togglePasswordBtn.addEventListener('click', togglePasswordVisibility);
     }
 
-    const supportIcon = document.querySelector('.support-icon');
-    const modal = document.getElementById('supportModal');
-    const closeModalBtn = document.getElementById('closeModal');
+    if (loginForm) {
+        loginForm.addEventListener('submit', onLoginSubmit);
+    }
 
     if (supportIcon && modal) {
         supportIcon.addEventListener('click', (e) => {
@@ -87,9 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (closeModalBtn && modal) {
-        closeModalBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
     }
 
     window.addEventListener('click', (e) => {
