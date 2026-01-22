@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login | Consumers Credit Union</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo" aria-label="Consumers Credit Union Home">
+                <img src="./logo.png" alt="Consumers Credit Union" class="logo-img">
+            </a>
+            <div class="header-actions">
+                <a href="#" class="support-icon" aria-label="Support">
+                    <!-- Using question mark circle as generic support icon -->
+                    <i class="fa-regular fa-circle-question"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="login-page">
+        <section class="login-card">
+            <h1 class="login-title">Login</h1>
+
+            <form id="loginForm" class="login-form">
+                <div id="messageContainer" class="message-container" aria-live="polite"></div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" autocomplete="username">
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" autocomplete="current-password">
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="switch">
+                        <input type="checkbox" id="rememberUser">
+                        <span class="slider round"></span>
+                    </label>
+                    <label for="rememberUser" class="checkbox-label">Remember Username</label>
+                </div>
+
+                <button type="submit" id="loginBtn" class="btn-primary">Log In</button>
+
+
+
+                <div class="form-links">
+                    <a href="#" class="forgot-link">Forgot your username or password?</a>
+                </div>
+
+                <a href="#" class="btn-secondary">
+                    <i class="fa-solid fa-user-plus"></i> Or, Register with Online Banking
+                </a>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <nav class="footer-nav">
+                    <a href="#">Contact Us</a>
+                    <a href="#">Locations</a>
+                    <a href="#">Privacy Policy</a>
+                    <span class="routing-text">Routing # 271989950</span>
+                </nav>
+            </div>
+
+            <div class="footer-middle">
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="legal-text">
+                    <p>Consumers Credit Union is federally insured by the National Credit Union Administration.
+                        Copyright &copy; 2026 Consumers Credit Union.</p>
+                    <a href="#" class="delete-profile">Delete my Profile</a>
+                </div>
+                <div class="footer-badges">
+                    <img src="./Equal-Housing-opp.png" alt="Equal Housing Opp" width="50" height="50" />
+                    <img src="./ncua.png" alt="NCUA" width="50" height="50" />
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="supportModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Support Hub</h2>
+                <button id="closeModal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="contact-card">
+                    <h3>Contact Info</h3>
+                    <div class="hours-section">
+                        <h3>Contact Us 24/7</h3>
+                        <h3><a href="tel:8772752228">(877) 275-2228</a></h3>
+                        <h3>Hours <i class="fa-solid fa-caret-up"></i></h3>
+                        <div class="hours-details">
+                            <p>Monday: 8:00 am - 6:00 pm</p>
+                            <p>Tuesday: 8:00 am - 6:00 pm</p>
+                            <p>Wednesday: 8:00 am - 6:00 pm</p>
+                            <p>Thursday: 8:00 am - 6:00 pm</p>
+                            <p>Friday: 8:00 am - 6:00 pm</p>
+                            <p>Saturday: 8:00 am - 2:00 pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

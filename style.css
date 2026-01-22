@@ -1,0 +1,605 @@
+:root {
+    /* Updated blue to matchConsumers Credit Union approximate color */
+    --primary-blue: #043f8b;
+    --hover-blue: #16407a;
+    --text-dark: #333333;
+    --text-label: #555555;
+    --border-color: #cccccc;
+    --white: #ffffff;
+    --bg-page: #ffffff;
+    /* Page background seems to be white mainly */
+    --link-blue: #1c5299;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.main-header {
+    background-color: var(--primary-blue);
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    /* Increased height slightly */
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    width: 100%;
+    /* Keep width somewhat constrained but fluid */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 45px;
+    /* Adjust based on actual logo aspect ratio */
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.support-icon {
+    color: white;
+    font-size: 1.8rem;
+    /* Slightly larger icon */
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.support-icon:hover {
+    opacity: 1;
+}
+
+
+.login-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    /* Optional: subtle gradient or plain white, image suggests very clean white/light grey */
+    background: #ffffff;
+}
+
+.login-card {
+    background: var(--white);
+    width: 100%;
+    max-width: 600px;
+    /* Slightly narrower */
+    padding: 40px 100px;
+    /* Soft diffuse shadow */
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    /* Removed border */
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-label);
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: var(--text-dark);
+    /* Make input background white */
+    background-color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    /* No glow, just border color change usually for this style */
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Custom switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    /* Slightly smaller */
+    height: 24px;
+    margin-right: 12px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    /* Grey when off */
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #130476;
+    /* Turned on color - keeping grey/neutral per typical logic unless specific brand color needed */
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+}
+
+.checkbox-label {
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+    font-size: 0.95rem !important;
+    color: #333 !important;
+    cursor: pointer;
+}
+
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #337ab7;
+    /* Slightly lighter/different blue for button sometimes */
+    background-color: var(--primary-blue);
+    /* Stick to brand for now */
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-blue);
+}
+
+.form-links {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.forgot-link {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f7ff;
+}
+
+
+.message-container {
+    margin-bottom: 0;
+    text-align: center;
+    /* Center the text/icon group */
+    font-size: 0.9rem;
+    min-height: 0;
+    /* Collapse when empty if needed, handled by display none usually or empty content */
+    display: none;
+    /* Hidden by default */
+}
+
+.message-container.message-error,
+.message-container.message-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center horizontally */
+    margin-bottom: 20px;
+}
+
+.message-error {
+    font-weight: 500;
+    color: var(--text-dark);
+    /* Ensure text is dark */
+}
+
+.error-icon-hexagon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    /* Square for circle */
+    background-color: #d93025;
+    /* Red Circle */
+    border-radius: 50%;
+    /* Make it a circle */
+    margin-right: 10px;
+    position: relative;
+    /* Remove clip-path from parent */
+}
+
+.error-icon-hexagon::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    background-color: white;
+    /* White Hexagon */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-icon-hexagon i {
+    position: relative;
+    z-index: 1;
+    /* Text on top */
+    color: #d93025;
+    font-weight: 800;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.message-success {
+    color: #1e8e3e;
+}
+
+
+
+.main-footer {
+    background-color: #fcfcfc;
+    /* Very light grey */
+    padding: 20px 0px 100px 0px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    margin-bottom: 10px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.footer-nav a {
+    color: var(--primary-blue);
+}
+
+.routing-text {
+    color: #555;
+    font-weight: normal;
+}
+
+.footer-middle {
+    margin-bottom: 20px;
+    padding-top: 15px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #444;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-blue);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.legal-text {
+    color: #666;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.delete-profile {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--link-blue);
+    font-weight: 600;
+}
+
+.delete-profile:hover {
+    text-decoration: underline;
+}
+
+.footer-badges {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Modal Styles - Kept mostly same */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: none;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 100px;
+
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #444;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-body {
+    padding: 32px;
+}
+
+.contact-card {
+    border: 1px solid #e0e0e0;
+    padding: 24px;
+    max-width: 400px;
+}
+
+.contact-card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #003057;
+
+}
+
+.hours-section h4 {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hours-section h4 i {
+    font-size: 0.8rem;
+}
+
+.hours-details {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.hours-details strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .main-header {
+        height: 60px;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    .login-page {
+        padding: 20px 15px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .login-card {
+        padding: 30px 20px;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
